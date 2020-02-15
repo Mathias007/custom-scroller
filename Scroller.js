@@ -2,18 +2,9 @@ class Scroller {
     constructor(rootSelector) {
         const rootElement = document.querySelector(rootSelector);
         this.sections = [...document.querySelectorAll("section")];
-        const visibleSection = this.sections.findIndex(element => {
+        const currentSectionIndex = this.sections.findIndex(element => {
             this.isScrolledIntoView(element);
         });
-
-        const currentSectionIndex = this.sections.findIndex(
-            function(element) {
-                return this.isScrolledIntoView(element);
-            }.bind(this)
-        ); // bind, jeżeli nie używamy arrow function
-
-        // this.currentSectionIndex =
-        //     currentSectionIndex < 0 ? 0 : currentSectionIndex;
 
         this.currentSectionIndex = Math.max(currentSectionIndex, 0);
 
@@ -38,7 +29,7 @@ class Scroller {
 
         setTimeout(() => {
             this.isThrottled = false;
-        }, 1000);
+        }, 500);
 
         const direction = event.deltaY < 0 ? -1 : 1;
 

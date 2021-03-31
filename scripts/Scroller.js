@@ -1,8 +1,8 @@
-class Scroller {
+export class Scroller {
     constructor(rootSelector) {
         const rootElement = document.querySelector(rootSelector);
         this.sections = [...document.querySelectorAll("section")];
-        const currentSectionIndex = this.sections.findIndex(element => {
+        const currentSectionIndex = this.sections.findIndex((element) => {
             this.isScrolledIntoView(element);
         });
 
@@ -55,7 +55,7 @@ class Scroller {
         this.selectActiveNavItem();
         this.sections[this.currentSectionIndex].scrollIntoView({
             behavior: "smooth",
-            block: "start"
+            block: "start",
         });
     }
 

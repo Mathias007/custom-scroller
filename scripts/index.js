@@ -1,12 +1,15 @@
-document.addEventListener("DOMContentLoaded", function() {
+import { Scroller } from "./Scroller.js";
+import { Swiper } from "./Swiper.js";
+
+document.addEventListener("DOMContentLoaded", function () {
     const scroller = new Scroller("#root");
 
-    document.addEventListener("wheel", event => scroller.listenScroll(event));
+    document.addEventListener("wheel", (event) => scroller.listenScroll(event));
 
     document.addEventListener("swipeUp", () => scroller.scroll(1));
     document.addEventListener("swipeDown", () => scroller.scroll(-1));
 
-    document.addEventListener("keydown", event => {
+    document.addEventListener("keydown", (event) => {
         switch (event.keyCode) {
             case 40:
                 return scroller.scroll(1);
@@ -17,3 +20,5 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+new Swiper();
